@@ -1,0 +1,66 @@
+# Vagrant basics 
+
+### Vagrant is a VM lifecycle automation tool.
+#### It lets you:
+    • Define VMs as code (Vagrantfile)
+    • Create, destroy, rebuild VMs consistently
+    • Reproduce the same lab on any machine
+
+#### Think of Vagrant as:
+	“Infrastructure-as-Code for local virtual machines.”
+
+### Why we use vagrant
+=========================================================================
+  --- Problem ---      			--- Vagrant Solution ---
+Inconsistent lab setups				Same VM every time
+Breaking your host OS				Isolated VMs
+Teaching / practice labs			One‑command environment
+Testing Ansible / scripts			Disposable machines
+Multi‑node labs					Easy orchestration
+==========================================================================
+
+### 1.3 How Vagrant Works (High Level)
+You → vagrant up
+	-> Vagrantfile (config)
+		->Provider (VirtualBox / VMware)
+			-> VMs created + provisioned
+### Key Components:
+    • Vagrant → Orchestrator
+    • Provider → Hypervisor (VirtualBox, VMware)
+    • Box → Base OS image
+    • Provisioner → Setup automation (Shell, Ansible)
+
+### 2. Core Components (Must Know)
+#### 2.1 Vagrantfile
+The heart of everything.
+    • Written in Ruby DSL (you don’t need Ruby knowledge)
+    • Declarative configuration
+
+Example:
+Vagrant.configure("2") do |config|
+config.vm.box = "ubuntu/jammy64"
+end
+
+#### 2.2 Boxes
+A box is a prebuilt VM image.
+	Common boxes:
+    		• ubuntu/jammy64
+    		• centos/7
+    		• almalinux/9
+    		• debian/bookworm64
+##### Commands related to boxes:
+     ```vagrant box list
+	vagrant box add ubuntu/jammy64
+	vagrant box remove ubuntu/jammy64 ```
+	*** Admin Tip: Boxes are read‑only templates.
+
+#### 2.3 Providers
+	Vagrant does not virtualize itself.
+##### Providers:
+    • VirtualBox (most common)
+    • VMware (Workstation / Fusion)
+    • Libvirt (KVM)
+
+###### To Check provider:
+	`vagrant provider `
+
