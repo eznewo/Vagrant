@@ -1,3 +1,6 @@
+# LAB 2 Web Server with Networking
+
+
 # LAB 1 - 
 Step 1: Create Project Directory
 Step 2: Initialize Vagrant
